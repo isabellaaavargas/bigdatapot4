@@ -4,8 +4,8 @@ import json
 #llamando a la libreria pandas para que se convierta en excel
 import pandas as pd
 
-api_client_id = "201c9f9ce08d4da983c6f769ef0fb6db" #desde mi dashboard de spotify
-api_client_secret = "849c3cc283ce4f93adf2f32782028bea"
+api_client_id = "" #desde mi dashboard de spotify
+api_client_secret = ""
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(api_client_id,api_client_secret))
 
