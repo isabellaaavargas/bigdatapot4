@@ -39,27 +39,19 @@
                 <h3>Extracción de datos</h3>
                 <b> Inicialización del Cliente de la API de YouTube </p>
 		<p>En este fragmento se muestra cómo se inicializa el cliente de la API de YouTube utilizando la clave de API proporcionada. Esto permite realizar solicitudes a la API para buscar videos.</p>
-                <!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">spotipy</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">spotipy.oauth2</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">SpotifyClientCredentials</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">json</span>
+              <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">pandas</span> <span style="color: #008800; font-weight: bold">as</span> <span style="color: #0e84b5; font-weight: bold">pd</span>
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">googleapiclient.discovery</span> <span style="color: #008800; font-weight: bold">import</span> build
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">datetime</span> <span style="color: #008800; font-weight: bold">import</span> datetime
 
-<span style="color: #f8f8f2">api_client_id</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span>
-<span style="color: #f8f8f2">api_client_secret</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span>
 
-<span style="color: #f8f8f2">spotify</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">spotipy</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Spotify(client_credentials_manager</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">SpotifyClientCredentials(api_client_id,api_client_secret))</span>
+<span style="color: #888888"># Hemos insertado nuestra clave de API aquí</span>
+API_KEY <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;AIzaSyDMKSNAoeVyq4NPWup1t1TVYqSkBT5-5GI&#39;</span>
 
-<span style="color: #f8f8f2">results</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">spotify</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">artist_related_artists(</span><span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">)</span>
 
-<span style="color: #75715e"># OPCION 1</span>
-<span style="color: #66d9ef">with</span> <span style="color: #f8f8f2">open(</span><span style="color: #e6db74">&#39;data.json&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;w&#39;</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">f:</span>
-    <span style="color: #f8f8f2">json</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dump(results,</span> <span style="color: #f8f8f2">f)</span>
-
-<span style="color: #75715e"># OPCION 2</span>
-<span style="color: #66d9ef">with</span> <span style="color: #f8f8f2">open(</span><span style="color: #e6db74">&#39;data_clean.json&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;w&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">encoding</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;utf-8&#39;</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">f:</span>
-    <span style="color: #f8f8f2">json</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dump(results,</span> <span style="color: #f8f8f2">f,</span> <span style="color: #f8f8f2">ensure_ascii</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">False,</span> <span style="color: #f8f8f2">indent</span><span style="color: #f92672">=</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">buscar_videos</span>(query, max_results<span style="color: #333333">=</span><span style="color: #007020">None</span>):
+    <span style="color: #888888"># Aquí construimos el cliente de la API de YouTube</span>
+    youtube <span style="color: #333333">=</span> build(<span style="background-color: #fff0f0">&#39;youtube&#39;</span>, <span style="background-color: #fff0f0">&#39;v3&#39;</span>, developerKey<span style="color: #333333">=</span>API_KEY)
 </pre></div>
-
-
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <!-- Exemple de Fragment de codi generat amb http://hilite.me/ -->
                 <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">capturer.crawler</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">c</span>
