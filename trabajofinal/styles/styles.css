@@ -75,9 +75,6 @@ a:visited {
 
 }
 
-ol {
-	counter-reset: item
-}
 li {
 	display: block;
 	color: black
