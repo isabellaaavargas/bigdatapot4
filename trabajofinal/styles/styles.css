@@ -80,8 +80,7 @@ li {
 	color: black
 }
 li:before {
-	content: counters(item, ".") ". ";
-	counter-increment: item
+    content: none;
 }
 ul {
     color: black;
