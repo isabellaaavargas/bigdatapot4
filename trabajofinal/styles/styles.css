@@ -79,7 +79,7 @@ ol {
 	counter-reset: item
 }
 li {
-	display: block
+	display: block;
 	color: #e7e7e7
 }
 li:before {
