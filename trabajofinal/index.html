@@ -37,7 +37,7 @@
                 <h2>Apartado técnico</h2>
                 <p>Para llevar a cabo este análisis, se ha desarrollado un script en Python utilizando la API de YouTube, que permite recolectar datos sobre los videos relacionados con "Operación Triunfo". A continuación, se presentan fragmentos clave del código que ilustran el proceso de obtención de datos.</p>
                 <h3>Extracción de datos</h3>
-                <b> Inicialización del Cliente de la API de YouTube </b>
+                <b> Inicialización del cliente de la API de YouTube </b>
 		<p>En este fragmento se muestra cómo se inicializa el cliente de la API de YouTube utilizando la clave de API proporcionada. Esto permite realizar solicitudes a la API para buscar videos.</p>
               <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">pandas</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">pd</span>
 <span style="color: #f92672">from</span> <span style="color: #f8f8f2">googleapiclient.discovery</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">build</span>
@@ -52,22 +52,63 @@
     <span style="color: #75715e"># Aquí construimos el cliente de la API de YouTube</span>
     <span style="color: #f8f8f2">youtube</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">build(</span><span style="color: #e6db74">&#39;youtube&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;v3&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">developerKey</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">API_KEY)</span>
 </pre></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <!-- Exemple de Fragment de codi generat amb http://hilite.me/ -->
-                <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">capturer.crawler</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">c</span>
-    <span style="color: #f92672">import</span> <span style="color: #f8f8f2">export</span> <span style="color: #66d9ef">as</span> <span style="color: #f8f8f2">e</span>
+                <b> Solicitud y extracción de datos de los videos </b>
+		<p>Aquí se muestra cómo se realiza una solicitud a la API de YouTube para buscar videos que coincidan con la consulta especificada. La respuesta se procesa para extraer el ID, título y descripción de cada video. </p>
+                <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #75715e"># Creamos una solicitud a la API de YouTube para buscar videos que coincidan con la consulta</span>
+        <span style="color: #f8f8f2">request</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">youtube</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">search()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">list(</span>
+            <span style="color: #f8f8f2">q</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">query,</span>
+            <span style="color: #f8f8f2">part</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;id,snippet&#39;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #f8f8f2">type</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;video&#39;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #f8f8f2">maxResults</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">min(</span><span style="color: #ae81ff">50</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">max_results</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">total_results</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">max_results</span> <span style="color: #66d9ef">else</span> <span style="color: #ae81ff">50</span><span style="color: #f8f8f2">),</span>
+            <span style="color: #f8f8f2">pageToken</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">next_page_token</span>
+        <span style="color: #f8f8f2">)</span>
 
-    <span style="color: #f8f8f2">queries</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&quot;coronavirus&quot;</span><span style="color: #f8f8f2">]</span> <span style="color: #75715e"># You can use this as a list</span>
-    <span style="color: #f8f8f2">max_results</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">5</span> <span style="color: #75715e">## Nº of results in search</span>
+        <span style="color: #75715e"># Ejecutamos la solicitud y almacenamos la respuesta</span>
+        <span style="color: #f8f8f2">response</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">request</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
 
-    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(q,</span> <span style="color: #f8f8f2">max_results):</span>
-                <span style="color: #f8f8f2">videos</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">c</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">explore_videos(q,</span> <span style="color: #f8f8f2">max_results)</span>
-                <span style="color: #f8f8f2">e</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">export_data(videos,</span> <span style="color: #f8f8f2">q)</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">item</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">response[</span><span style="color: #e6db74">&#39;items&#39;</span><span style="color: #f8f8f2">]:</span>
+            <span style="color: #75715e"># Extraemos el ID, título y descripción del video</span>
+            <span style="color: #f8f8f2">video_id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;id&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;videoId&#39;</span><span style="color: #f8f8f2">]</span>
+            <span style="color: #f8f8f2">video_title</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;snippet&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;title&#39;</span><span style="color: #f8f8f2">]</span>
+            <span style="color: #f8f8f2">video_description</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;snippet&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;description&#39;</span><span style="color: #f8f8f2">]</span>
+</pre></div>
+		<b>Obtención de Estadísticas y Creación del Enlace del Video</b>
+		<p>En este último fragmento se muestra cómo se obtienen las estadísticas adicionales de cada video, como vistas, likes, canal y fecha de publicación. Estos datos se formatean y se construye un enlace al video, que se añade a la lista de videos. </p>
+			<div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">           <span style="color: #75715e"># Realizamos otra solicitud para obtener las estadísticas del video</span>
+            <span style="color: #f8f8f2">stats_request</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">youtube</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">videos()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">list(</span>
+                <span style="color: #f8f8f2">part</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;statistics,snippet&#39;</span><span style="color: #f8f8f2">,</span>
+                <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">video_id</span>
+            <span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">stats_response</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">stats_request</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">execute()</span>
 
-    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;__main__&quot;</span><span style="color: #f8f8f2">:</span>
-        <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">q</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">queries:</span>
-            <span style="color: #f8f8f2">main(q,</span> <span style="color: #f8f8f2">max_results)</span>
-    </pre></div>
+            <span style="color: #75715e"># Obtenemos las estadísticas y el snippet del video</span>
+            <span style="color: #f8f8f2">video_stats</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">stats_response[</span><span style="color: #e6db74">&#39;items&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;statistics&#39;</span><span style="color: #f8f8f2">]</span>
+            <span style="color: #f8f8f2">video_snippet</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">stats_response[</span><span style="color: #e6db74">&#39;items&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;snippet&#39;</span><span style="color: #f8f8f2">]</span>
+
+            <span style="color: #75715e"># Extraemos variables adicionales como vistas, likes, canal y fecha de publicación</span>
+            <span style="color: #f8f8f2">views</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">video_stats</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&#39;viewCount&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;No disponible&#39;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">likes</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">video_stats</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&#39;likeCount&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;No disponible&#39;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">channel_title</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">video_snippet</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&#39;channelTitle&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;No disponible&#39;</span><span style="color: #f8f8f2">)</span>
+            <span style="color: #f8f8f2">published_at</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">video_snippet</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get(</span><span style="color: #e6db74">&#39;publishedAt&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;No disponible&#39;</span><span style="color: #f8f8f2">)</span>
+
+            <span style="color: #75715e"># Formateamos la fecha de publicación</span>
+            <span style="color: #f8f8f2">published_at</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">datetime</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strptime(published_at,</span> <span style="color: #e6db74">&#39;%Y-%m-%dT%H:%M:%SZ&#39;</span><span style="color: #f8f8f2">)</span>
+
+            <span style="color: #75715e"># Construimos el enlace del video</span>
+            <span style="color: #f8f8f2">video_link</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">f</span><span style="color: #e6db74">&#39;https://www.youtube.com/watch?v={video_id}&#39;</span>
+
+            <span style="color: #75715e"># Añadimos la información del video a la lista de videos</span>
+            <span style="color: #f8f8f2">videos</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append({</span>
+                <span style="color: #e6db74">&#39;Título&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">video_title,</span>
+                <span style="color: #e6db74">&#39;Descripción&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">video_description,</span>
+                <span style="color: #e6db74">&#39;Visualizaciones&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">views,</span>
+                <span style="color: #e6db74">&#39;Likes&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">likes,</span>
+                <span style="color: #e6db74">&#39;Canal&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">channel_title,</span>
+                <span style="color: #e6db74">&#39;Fecha de publicación&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">published_at</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">strftime(</span><span style="color: #e6db74">&#39;%Y-%m-%d&#39;</span><span style="color: #f8f8f2">),</span>
+                <span style="color: #e6db74">&#39;Enlace&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #f8f8f2">video_link</span>
+            <span style="color: #f8f8f2">})</span>
+</pre></div>
+
     <!-- Fi Fragment de codi -->
     <h2>La investigación</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
