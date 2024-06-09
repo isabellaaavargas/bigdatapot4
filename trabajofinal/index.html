@@ -39,18 +39,18 @@
                 <h3>Extracción de datos</h3>
                 <b> Inicialización del Cliente de la API de YouTube </b>
 		<p>En este fragmento se muestra cómo se inicializa el cliente de la API de YouTube utilizando la clave de API proporcionada. Esto permite realizar solicitudes a la API para buscar videos.</p>
-              <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">pandas</span> <span style="color: #008800; font-weight: bold">as</span> <span style="color: #0e84b5; font-weight: bold">pd</span>
-<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">googleapiclient.discovery</span> <span style="color: #008800; font-weight: bold">import</span> build
-<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">datetime</span> <span style="color: #008800; font-weight: bold">import</span> datetime
+              <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">pandas</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">pd</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">googleapiclient.discovery</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">build</span>
+<span style="color: #f92672">from</span> <span style="color: #f8f8f2">datetime</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">datetime</span>
 
 
-<span style="color: #888888"># Hemos insertado nuestra clave de API aquí</span>
-API_KEY <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&#39;AIzaSyDMKSNAoeVyq4NPWup1t1TVYqSkBT5-5GI&#39;</span>
+<span style="color: #75715e"># Hemos insertado nuestra clave de API aquí</span>
+<span style="color: #f8f8f2">API_KEY</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;AIzaSyDMKSNAoeVyq4NPWup1t1TVYqSkBT5-5GI&#39;</span>
 
 
-<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">buscar_videos</span>(query, max_results<span style="color: #333333">=</span><span style="color: #007020">None</span>):
-    <span style="color: #888888"># Aquí construimos el cliente de la API de YouTube</span>
-    youtube <span style="color: #333333">=</span> build(<span style="background-color: #fff0f0">&#39;youtube&#39;</span>, <span style="background-color: #fff0f0">&#39;v3&#39;</span>, developerKey<span style="color: #333333">=</span>API_KEY)
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">buscar_videos</span><span style="color: #f8f8f2">(query,</span> <span style="color: #f8f8f2">max_results</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">None):</span>
+    <span style="color: #75715e"># Aquí construimos el cliente de la API de YouTube</span>
+    <span style="color: #f8f8f2">youtube</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">build(</span><span style="color: #e6db74">&#39;youtube&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;v3&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">developerKey</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">API_KEY)</span>
 </pre></div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <!-- Exemple de Fragment de codi generat amb http://hilite.me/ -->
