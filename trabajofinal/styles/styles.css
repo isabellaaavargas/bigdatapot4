@@ -80,14 +80,14 @@ ol {
 }
 li {
 	display: block;
-	color: #e7e7e7
+	color: black
 }
 li:before {
 	content: counters(item, ".") ". ";
 	counter-increment: item
 }
 ul {
-    color: #e7e7e7;
+    color: black;
 }
 
 #sol_ex_1, .solution {
