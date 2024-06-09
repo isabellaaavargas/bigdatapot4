@@ -36,7 +36,7 @@
                 <h2>Apartado técnico</h2>
                 <p>Para llevar a cabo este análisis, se ha desarrollado un script en Python utilizando la API de YouTube, que permite recolectar datos sobre los videos relacionados con "Operación Triunfo". A continuación, se presentan fragmentos clave del código que ilustran el proceso de obtención de datos.</p>
                 <h3>Extracción de datos</h3>
-                <b> Inicialización del cliente de la API de YouTube </b>
+		<b class="highlight">Inicialización del cliente de la API de YouTube</b>
 		<p>En este fragmento se muestra cómo se inicializa el cliente de la API de YouTube utilizando la clave de API proporcionada. Esto permite realizar solicitudes a la API para buscar videos.</p>
               <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">pandas</span> <span style="color: #f92672">as</span> <span style="color: #f8f8f2">pd</span>
 <span style="color: #f92672">from</span> <span style="color: #f8f8f2">googleapiclient.discovery</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">build</span>
@@ -52,7 +52,7 @@
     <span style="color: #f8f8f2">youtube</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">build(</span><span style="color: #e6db74">&#39;youtube&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;v3&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">developerKey</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">API_KEY)</span>
 </pre></div>
 		<br>
-                <b> Solicitud y extracción de datos de los videos </b>
+                <b class="highlight"> Solicitud y extracción de datos de los videos </b>
 		<p>Aquí se muestra cómo se realiza una solicitud a la API de YouTube para buscar videos que coincidan con la consulta especificada. La respuesta se procesa para extraer el ID, título y descripción de cada video. </p>
                 <div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">  <span style="color: #75715e"># Creamos una solicitud a la API de YouTube para buscar videos que coincidan con la consulta</span>
         <span style="color: #f8f8f2">request</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">youtube</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">search()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">list(</span>
@@ -73,7 +73,7 @@
             <span style="color: #f8f8f2">video_description</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">item[</span><span style="color: #e6db74">&#39;snippet&#39;</span><span style="color: #f8f8f2">][</span><span style="color: #e6db74">&#39;description&#39;</span><span style="color: #f8f8f2">]</span>
 </pre></div>
 		<br>
-		<b>Obtención de Estadísticas y Creación del Enlace del Video</b>
+		<b class="highlight"> Obtención de Estadísticas y Creación del Enlace del Video</b>
 		<p>En este último fragmento se muestra cómo se obtienen las estadísticas adicionales de cada video, como vistas, likes, canal y fecha de publicación. Estos datos se formatean y se construye un enlace al video, que se añade a la lista de videos. </p>
 			<div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">           <span style="color: #75715e"># Realizamos otra solicitud para obtener las estadísticas del video</span>
             <span style="color: #f8f8f2">stats_request</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">youtube</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">videos()</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">list(</span>
