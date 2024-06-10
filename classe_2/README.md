@@ -25,5 +25,6 @@ El script genera un archivo Excel (`dataset.xlsx`) que contiene la siguiente inf
 Las siguientes dependencias son necesarias para ejecutar el script:
 - `spotipy`: Librería para interactuar con la API de Spotify.
 - `pandas`: Librería para manipulación y análisis de datos, utilizada para crear el archivo Excel.
+- `openpyxl`: Librería para trabajar con archivos Excel (.xlsx).
 
 Estas dependencias fueron instalads utilizando pip install
