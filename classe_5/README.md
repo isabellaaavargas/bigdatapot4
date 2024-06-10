@@ -39,7 +39,7 @@ El script realiza los siguientes pasos:
 
 El script utiliza la librería `pandas` para manipular los datos como DataFrames.
 
-Puedes instalar la librería utilizando pip:
+Se puede instalar la librería utilizando pip:
 
 ```sh
 pip install pandas
