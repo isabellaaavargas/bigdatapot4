@@ -1,5 +1,4 @@
-## (En cuanto al archivo main.py) 
-# Análisis de Listas de Reproducción en Spotify
+#  (En cuanto al archivo main.py) Análisis de Listas de Reproducción en Spotify
 
 Este script de Python utiliza la API de Spotify para obtener información sobre las canciones de varias listas de reproducción y guardarla en un archivo CSV para su análisis posterior.
 
@@ -22,8 +21,7 @@ El script requiere las siguientes dependencias que deben ser instaladas utilizan
 - `spotipy`: Librería para interactuar con la API de Spotify.
 - `pandas`: Librería para manipulación y análisis de datos.
 
-## (En cuanto al archivo twitch) 
-# Obtención de Información de Transmisiones en Directo de Twitch
+# (En cuanto al archivo twitch) Obtención de Información de Transmisiones en Directo de Twitch
 
 Este script de Python utiliza la API de Twitch para obtener información sobre las transmisiones en directo en español y guarda los resultados en archivos JSON para su análisis posterior.
 
