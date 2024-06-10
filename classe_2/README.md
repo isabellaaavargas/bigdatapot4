@@ -27,4 +27,7 @@ Las siguientes dependencias son necesarias para ejecutar el script:
 - `pandas`: Librería para manipulación y análisis de datos, utilizada para crear el archivo Excel.
 - `openpyxl`: Librería para trabajar con archivos Excel (.xlsx).
 
-Estas dependencias fueron instalads utilizando pip install
+Se pueden instalar las librerías utilizando pip:
+
+```sh
+pip install pandas
