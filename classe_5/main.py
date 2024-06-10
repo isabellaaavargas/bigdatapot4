@@ -68,4 +68,5 @@ df = pd.DataFrame(llista_final)
 print(df)
 
 # Guardamos el DataFrame como un archivo CSV
+
 df.to_csv("dades.csv", index=False)
