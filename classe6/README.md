@@ -22,9 +22,3 @@ El script utiliza las siguientes librerías de Python:
 
 Hay que asegurarse de tener estas librerías instaladas antes de ejecutar el script.
 
-
-## Código
-
-```python
-# Aquí iría el código completo del script, incluyendo el web scraping en Wikipedia, manipulación de datos con pandas,
-# búsqueda de canciones en Spotify y cualquier otra funcionalidad relevante.
