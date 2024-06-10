@@ -17,7 +17,12 @@ El resultado del script es un archivo CSV llamado `graf.generes.csv`. Este archi
 
 ## Dependencias
 
-El script requiere las siguientes dependencias que deben ser instaladas (junto con el pip install):
+El script requiere las siguientes dependencias que deben ser instaladas:
 - `spotipy`: Librería para interactuar con la API de Spotify.
 - `pandas`: Librería para manipulación y análisis de datos.
 - `openpyxl`: Librería para trabajar con archivos Excel (.xlsx).
+
+Se pueden instalar las librerías utilizando pip:
+
+```sh
+pip install json
