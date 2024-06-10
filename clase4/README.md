@@ -17,9 +17,14 @@ El resultado del script es un archivo CSV llamado `output.csv`, que contiene inf
 
 ## Dependencias
 
-El script requiere las siguientes dependencias que deben ser instaladas utilizando pip install:
+El script requiere las siguientes dependencias que deben ser instaladas:
 - `spotipy`: Librería para interactuar con la API de Spotify.
 - `pandas`: Librería para manipulación y análisis de datos.
+
+Se pueden instalar las librerías utilizando pip:
+
+```sh
+pip install pandas
 
 # (En cuanto al archivo twitch) Obtención de Información de Transmisiones en Directo de Twitch
 
@@ -40,8 +45,12 @@ El resultado del script es una serie de archivos JSON que contienen información
 
 ## Dependencias
 
-El script requiere las siguientes dependencias que deben ser instaladas con pip install:
+El script requiere las siguientes dependencias que deben ser instaladas:
 - `twitchAPI`: Librería para interactuar con la API de Twitch.
 - `json`: Librería estándar de Python para manipulación de archivos JSON.
 - `time`: Librería estándar de Python para manejo de tiempos.
 
+Se pueden instalar las librerías utilizando pip:
+
+```sh
+pip install json
