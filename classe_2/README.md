@@ -1,6 +1,6 @@
 # Spotify Related Artists Data Extractor
 
-Este repositorio contiene un script en Python que se conecta a mi API de Spotify para obtener una lista de artistas relacionados con un artista específico (en este caso, Rosalía) y guarda la información de esos artistas en un archivo Excel.
+Este repositorio contiene un script en Python (main.py) que se conecta a mi API de Spotify para obtener una lista de artistas relacionados con un artista específico (en este caso, Rosalía) y guarda la información de esos artistas en un archivo Excel.
 
 ## Descripción
 
