@@ -20,14 +20,8 @@ El script utiliza las siguientes librerías de Python:
 - `pandas`: Para manipular los datos como DataFrames.
 - `spotipy`: Para interactuar con la API de Spotify y realizar búsquedas de canciones.
 
-Asegúrate de tener estas librerías instaladas antes de ejecutar el script.
+Hay que asegurarse de tener estas librerías instaladas antes de ejecutar el script.
 
-## Uso
-
-1. Clona este repositorio en tu máquina local.
-2. Instala las dependencias necesarias utilizando pip.
-3. Ejecuta el script en tu entorno de Python.
-4. Revisa los resultados obtenidos en los archivos generados.
 
 ## Código
 
