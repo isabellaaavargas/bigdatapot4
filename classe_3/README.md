@@ -25,4 +25,4 @@ El script requiere las siguientes dependencias que deben ser instaladas:
 Se pueden instalar las librerías utilizando pip:
 
 ```sh
-pip install json
+pip install pandas
