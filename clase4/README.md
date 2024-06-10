@@ -21,10 +21,7 @@ El script requiere las siguientes dependencias que deben ser instaladas:
 - `spotipy`: Librería para interactuar con la API de Spotify.
 - `pandas`: Librería para manipulación y análisis de datos.
 
-Se pueden instalar las librerías utilizando pip:
-
-```sh
-pip install pandas
+Se pueden instalar las librerías utilizando pip install pandas.
 
 # (En cuanto al archivo twitch) Obtención de Información de Transmisiones en Directo de Twitch
 
