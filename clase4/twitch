@@ -1,26 +1,40 @@
 public = "clau_publica"
 secret = "clau_secreta"
 
+
+# Se importan la librería de Twitch y otras librerías necesarias
+
 from twitchAPI.twitch import Twitch
 import json
 import time
 
+# Se inicializa la instancia de Twitch con las claves públicas y secretas proporcionadas
+
 twitch = Twitch(public, secret)
-next = None
-loop = 0
+next = None  #Esta variable se usa para almacenar el valor de cursor de paginación de la siguiente página
+loop = 0     # Y esta para contar el número de iteraciones (páginas)
+
+# Se define la función para obtener y guardar la información de las transmisiones en directo de Twitch
+
 def get_str(next, loop):
+    # Se llama a la API de Twitch para obtener información sobre las transmisiones en directo
     resposta = twitch.get_streams(language="es", after=next, first=100)
-    print(len(resposta["data"]))
+    print(len(resposta["data"])) # Esto imprime la cantidad de transmisiones obtenidas
+
+    # Guarda la respuesta en un archivo JSON con el número de iteración como nombre de archivo
     with open(f'{loop}.json', 'w', encoding='utf-8') as f:
         json.dump(resposta, f, ensure_ascii=False, indent=4)
+
     try:
-        next = resposta["pagination"]["cursor"]
-        print(f"hi ha nova pàgina loop {loop}")
-        loop = loop+1
-        time.sleep(2)
-        get_str(next, loop)
+        #Intenta obtener el cursor de paginación de la siguiente página
+        next = resposta["pagination"]["cursor"] 
+        print(f"hi ha nova pàgina loop {loop}") # Imprime un mensaje indicando una nueva página
+        loop = loop+1  # Incrementa el contador de iteraciones
+        time.sleep(2)  # Aquí espera 2 segundos para evitar exceder el límite de solicitudes
+        get_str(next, loop)  # Llama a la función con el cursor de paginación de la siguiente página
     except:
-        print("final")
+        print("final") # Si no hay más páginas, imprime un mensaje indicando el final del proceso
         pass
 
+# Llama a la función para iniciar el proceso de obtención de información de transmisiones en directo
 get_str(next,loop)
